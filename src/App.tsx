@@ -2,6 +2,7 @@ import Header from "./components/header";
 import Hero from "./components/hero";
 import Feature from "./components/feature";
 import About from "./components/about";
+import Video from "./components/video";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Feature />
       <About />
+      <Video />
     </div>
   );
 }

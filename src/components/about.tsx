@@ -42,14 +42,17 @@ const About: React.FC = () => {
   ];
   
   return (
-    <section className="py-20 relative min-h-screen bg-cover bg-center bg-fixed"
+    <section 
+      className="py-20 relative min-h-screen bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: "url('/tractor.jpg')"
       }}
-      >
-      <div className="absolute inset-0 bg-black/40"></div>
+    >
+      {/* Darker overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/50"></div>
 
-      <div className="container mx-auto px-6 lg:px-15 text-white">
+      {/* Content with proper z-index */}
+      <div className="container mx-auto px-6 lg:px-15 text-white relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,7 +102,7 @@ const About: React.FC = () => {
                     className="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
                   {item.title}
@@ -120,10 +123,10 @@ const About: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-black mb-4 drop-shadow-[0_0_10px_rgba(72,187,120,0.5)]">
-              Meet Our <span className="text-green">Team</span>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Meet Our <span className="text-green-400">Team</span>
             </h2>
-            <p className="text-lg text-white max-w-2xl mx-auto drop-shadow-[0_0_10px_rgba(72,187,120,0.5)]">
+            <p className="text-lg text-white/90 max-w-2xl mx-auto">
               The passionate individuals behind Blacc Farms
             </p>
           </motion.div>
@@ -148,7 +151,7 @@ const About: React.FC = () => {
                     />
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-[0_0_10px_rgba(72,187,120,0.5)]">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   {member.name}
                 </h3>
                 <p className="text-white font-semibold mb-2">

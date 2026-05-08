@@ -65,71 +65,78 @@ const Header: React.FC = () => {
     ];
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50 bg-white border-b border-wheat shadow-lg">
+        <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-green/10 shadow-md">
             <div className="container mx-auto px-6 lg:px-15">
-                <div className="flex justify-between items-center py-6">
-                    <motion.button
+                <div className="flex justify-between items-center py-4 lg:py-5">
+                    {/* Logo */}
+                    <motion.a
+                        href="/"
                         className="flex items-center space-x-3 focus:outline-none cursor-pointer"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
-                        onClick={() => {
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                        }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        aria-label="Home"
                     >
-                        <FaLeaf className="h-10 w-10 text-green-700 transition-colors duration-300" />
-                        <h1 className="text-2xl font-bold text-black tracking-widest">Blacc Farms</h1>
-                    </motion.button>
+                        <div className="bg-green-800 p-2 rounded-full">
+                            <FaLeaf className="h-6 w-6 text-white" />
+                        </div>
+                        <div>
+                            <h1 className="text-2xl font-bold text-black tracking-tight">Blacc Farms</h1>
+                            <p className="text-xs text-green-700 font-semibold">Sustainable Organic Farming</p>
+                        </div>
+                    </motion.a>
 
-                    <nav className="hidden lg:flex items-center space-x-8">
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center space-x-1">
                         {mainNavItems.map((item) => (
-                            <div key={item.label} className="relative">
-                                <motion.button
-                                    className="flex items-center space-x-2 text-black hover:text-green-800 transition-colors duration-300 font-medium cursor-pointer"
+                            <div key={item.label} className="relative group">
+                                <motion.a
+                                    href={item.href}
+                                    className="flex items-center space-x-1 text-gray-700 hover:text-green-800 transition-colors duration-300 font-medium py-2 px-3 rounded-lg hover:bg-green-50"
                                     onMouseEnter={() => setActiveDropdown(item.hasDropdown ? item.label : null)}
                                     onMouseLeave={() => setActiveDropdown(null)}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                 >
                                     <span>{item.label}</span>
-                                    {item.hasDropdown && <FaChevronDown className="text-sm" />}
-                                </motion.button>
+                                    {item.hasDropdown && <FaChevronDown className="text-xs transition-transform duration-300 group-hover:rotate-180" />}
+                                </motion.a>
 
                                 {item.hasDropdown && (
                                     <AnimatePresence>
                                         {activeDropdown === item.label && (
                                             <motion.div
-                                                initial={{ opacity: 0, y: -10 }}
+                                                initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: -10 }}
+                                                exit={{ opacity: 0, y: 10 }}
                                                 transition={{ duration: 0.2 }}
-                                                className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-wheat/30 overflow-hidden z-50"
+                                                className="absolute top-full left-0 mt-1 w-80 bg-white rounded-xl shadow-xl border border-green/10 overflow-hidden z-50"
                                                 onMouseEnter={() => setActiveDropdown(item.label)}
                                                 onMouseLeave={() => setActiveDropdown(null)}
                                             >
                                                 <div className="p-6">
-                                                    <h3 className="text-lg font-bold text-blacc mb-4">{item.label}</h3>
-                                                    <div className="grid gap-3">
+                                                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                                        <span className="text-green-800">{item.label}</span>
+                                                    </h3>
+                                                    <div className="grid gap-2">
                                                         {dropdownContent[item.label as keyof typeof dropdownContent]?.map((dropdownItem, index) => (
                                                             <motion.a
                                                                 key={dropdownItem.label}
                                                                 href={dropdownItem.href}
-                                                                initial={{ opacity: 0, x: -20 }}
+                                                                initial={{ opacity: 0, x: -10 }}
                                                                 animate={{ opacity: 1, x: 0 }}
-                                                                transition={{ duration: 0.3, delay: index * 0.1 }}
-                                                                className="flex items-center space-x-3 p-3 rounded-xl hover:bg-sage/10 transition-colors duration-300 group"
+                                                                transition={{ duration: 0.2, delay: index * 0.05 }}
+                                                                className="flex items-start space-x-3 p-3 rounded-lg hover:bg-green-50 transition-colors duration-300 group/item"
                                                             >
-                                                                <div className="text-green text-xl group-hover:scale-110 transition-transform duration-300">
+                                                                <div className="text-green-700 text-lg mt-1 group-hover/item:scale-110 transition-transform duration-300">
                                                                     {dropdownItem.icon}
                                                                 </div>
-                                                                <div>
-                                                                    <div className="font-semibold text-blacc group-hover:text-green transition-colors duration-300">
+                                                                <div className="flex-1">
+                                                                    <div className="font-semibold text-gray-900 group-hover/item:text-green-800 transition-colors duration-300">
                                                                         {dropdownItem.label}
                                                                     </div>
-                                                                    <div className="text-sm text-earth/70">
+                                                                    <div className="text-xs text-gray-600">
                                                                         {dropdownItem.description}
                                                                     </div>
                                                                 </div>
@@ -143,36 +150,41 @@ const Header: React.FC = () => {
                                 )}
                             </div>
                         ))}
-
-                        <div className="flex items-center space-x-4 ml-8">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="text-green-800 hover:text-black transition-colors duration-300 cursor-pointer"
-                            >
-                                <FaSearch className="text-xl" />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="text-green-800 hover:text transition-colors duration-300 cursor-pointer"
-                            >
-                                <FaShoppingCart className="text-xl " />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-green-800 text-white px-8 py-2 rounded-full font-bold transition-all duration-300 shadow-lg cursor-pointer"
-                            >
-                                Shop Now
-                            </motion.button>
-                        </div>
                     </nav>
 
+                    <div className="hidden lg:flex items-center space-x-6">
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="text-gray-700 hover:text-green-800 transition-colors duration-300 relative"
+                            aria-label="Search"
+                        >
+                            <FaSearch className="text-xl" />
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="text-gray-700 hover:text-green-800 transition-colors duration-300 relative"
+                            aria-label="Shopping Cart"
+                        >
+                            <FaShoppingCart className="text-xl" />
+                            <span className="absolute -top-2 -right-2 bg-green-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </motion.button>
+                        <motion.a
+                            href="/shop"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-green-800 hover:bg-green-900 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+                        >
+                            Shop Now
+                        </motion.a>
+                    </div>
+
                     <motion.button
-                        className="lg:hidden text-black"
+                        className="lg:hidden text-gray-700"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         whileTap={{ scale: 0.95 }}
+                        aria-label="Toggle Menu"
                     >
                         {isMobileMenuOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
                     </motion.button>
@@ -185,18 +197,21 @@ const Header: React.FC = () => {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="lg:hidden bg-white border-t border-wheat/30 overflow-hidden absolute w-full left-0"
+                            className="lg:hidden bg-white border-t border-green/10 overflow-hidden"
                         >
-                            <div className="px-6 py-6 space-y-4">
+                            <div className="px-6 py-6 space-y-4 max-h-96 overflow-y-auto">
                                 {mainNavItems.map((item) => (
                                     <div key={item.label}>
-                                        <button
-                                            className="flex items-center justify-between w-full text-black font-medium py-2"
+                                        <motion.button
+                                            className="flex items-center justify-between w-full text-gray-700 hover:text-green-800 font-semibold py-3 px-4 rounded-lg hover:bg-green-50 transition-colors duration-300"
                                             onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                                            whileTap={{ scale: 0.98 }}
                                         >
                                             <span>{item.label}</span>
-                                            {item.hasDropdown && <FaChevronDown className="text-sm" />}
-                                        </button>
+                                            {item.hasDropdown && (
+                                                <FaChevronDown className={`text-sm transition-transform duration-300 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
+                                            )}
+                                        </motion.button>
 
                                         {item.hasDropdown && activeDropdown === item.label && (
                                             <motion.div
@@ -209,16 +224,16 @@ const Header: React.FC = () => {
                                                     <a
                                                         key={dropdownItem.label}
                                                         href={dropdownItem.href}
-                                                        className="flex items-center space-x-3 p-3 rounded-xl hover:bg-sage/10 transition-colors duration-300"
+                                                        className="flex items-center space-x-3 p-3 rounded-lg hover:bg-green-50 transition-colors duration-300 group"
                                                     >
-                                                        <div className="text-green">
+                                                        <div className="text-green-700 text-lg">
                                                             {dropdownItem.icon}
                                                         </div>
                                                         <div>
-                                                            <div className="font-medium text-blacc">
+                                                            <div className="font-medium text-gray-900">
                                                                 {dropdownItem.label}
                                                             </div>
-                                                            <div className="text-sm text-earth/70">
+                                                            <div className="text-xs text-gray-600">
                                                                 {dropdownItem.description}
                                                             </div>
                                                         </div>
@@ -229,10 +244,14 @@ const Header: React.FC = () => {
                                     </div>
                                 ))}
 
-                                <div className="pt-4 border-t border-wheat/30">
-                                    <button className="w-full bg-sage text-cream px-6 py-3 rounded-full font-semibold hover:bg-earth transition-all duration-300">
+                                <div className="pt-4 border-t border-green/10">
+                                    <motion.a
+                                        href="/shop"
+                                        className="w-full block text-center bg-green-800 hover:bg-green-900 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300"
+                                        whileTap={{ scale: 0.95 }}
+                                    >
                                         Shop Now
-                                    </button>
+                                    </motion.a>
                                 </div>
                             </div>
                         </motion.div>
