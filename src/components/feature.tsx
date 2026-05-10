@@ -121,7 +121,7 @@ const Feature: React.FC = () => {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-cream to-transparent">
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16">
+      {/*<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16">
         <div className="text-center ">
           <h4 className="text-earth/70 mb-2">
             Started in
@@ -154,7 +154,7 @@ const Feature: React.FC = () => {
             10
           </p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
