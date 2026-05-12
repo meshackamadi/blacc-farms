@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaLeaf } from "react-icons/fa";
 import {
-  Sprout,
   ChevronDown,
   Twitter,
   Github,
