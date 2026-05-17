@@ -93,7 +93,7 @@ const Testimonials: React.FC = () => {
   const visibleTestimonials = testimonials.slice(activeIndex, activeIndex + itemsPerPage);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-cream">
+    <section id="testimonies" className="py-24 relative overflow-hidden bg-cream">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(135,169,107,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(34,197,94,0.05),transparent_50%)]" />
 

@@ -18,7 +18,7 @@ const Video: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-linear-to-b from-white via-cream to-white overflow-hidden">
+    <section id="farm tour" className="py-24 bg-linear-to-b from-white via-cream to-white overflow-hidden">
       <div className="container mx-auto px-6 lg:px-15">
         {/* Section Header */}
         <motion.div
@@ -82,7 +82,7 @@ const Video: React.FC = () => {
                 </motion.button>
 
                 {/* Video Duration Badge */}
-                <div className="absolute bottom-6 left-6 bg-black/70 backdrop-blur-md text-white px-4 py-2 rounded-lg z-20 font-semibold">
+                <div id="farm store" className="absolute bottom-6 left-6 bg-black/70 backdrop-blur-md text-white px-4 py-2 rounded-lg z-20 font-semibold">
                   12:45
                 </div>
               </>

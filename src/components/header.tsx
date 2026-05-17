@@ -26,7 +26,13 @@ const Header: React.FC = () => {
                 label: "Certifications",
                 href: "#certifications", 
                 description: "Organic & quality standards" 
-            },    
+            },
+            {
+                icon: <FaLeaf />,
+                label: "Testimonies",
+                href: "#testimonies",
+                description: "Hear from our satisfied customers"
+            }    
         ],
         Products: [
             { icon: <GiFruitBowl />, label: "Fresh Produce", href: "#produce", description: "Fruits & vegetables" },
@@ -36,8 +42,8 @@ const Header: React.FC = () => {
             { icon: <FaLeaf />, label: "Farm Boxes", href: "#produce", description: "Subscription boxes" },
         ],
         Visit: [
-            { icon: <FaLeaf />, label: "Farm Store", href: "/visit#store", description: "Location & hours" },
-            { icon: <FaLeaf />, label: "Farm Tours", href: "/visit#tours", description: "Guided experiences" },
+            { icon: <FaLeaf />, label: "Farm Store", href: "#farm store", description: "Location & hours" },
+            { icon: <FaLeaf />, label: "Farm Tours", href: "#farm tour", description: "Guided experiences" },
             { icon: <FaLeaf />, label: "Events", href: "/visit#events", description: "Workshops & festivals" },
             { icon: <FaLeaf />, label: "U-Pick", href: "/visit#upick", description: "Pick your own" },
         ],
