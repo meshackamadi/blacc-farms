@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # ensure full history so gh-pages can be created/pushed reliably
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,6 +32,16 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Show build output
+        run: |
+          echo "dist contents:"
+          ls -la ./dist || echo "dist not found"
+
+      - name: Configure git for deploy
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
