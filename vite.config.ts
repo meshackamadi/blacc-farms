@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
+  // Set base path for GitHub Pages (repository name)
+  base: '/Blacc-farms/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
