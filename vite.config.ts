@@ -4,8 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  // Set base path for GitHub Pages (repository name)
-  base: '/Blacc-farms/',
+  // Dynamic base: use GitHub Actions path for GitHub Pages, otherwise root (Vercel/local)
+  base: process.env.GITHUB_ACTIONS ? '/blacc-farms/' : '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

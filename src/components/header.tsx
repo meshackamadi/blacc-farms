@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                         whileTap={{ scale: 0.95 }}
                     >
                         <img 
-                            src="/blaccfarmlogo1.png" 
+                            src={`${import.meta.env.BASE_URL}blaccfarmlogo1.png`} 
                             alt="Blacc Farms Logo"
                             className="h-12 w-30 lg:h-20 lg:w-60 object-contain drop-shadow-xl hover:drop-shadow-3xl transition-all duration-300 brightness-110"
                         />

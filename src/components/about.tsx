@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 const About: React.FC = () => {
   const teamMembers = [
     {
-      image: "/blacc_ceo1.jpg",
+      image: `${import.meta.env.BASE_URL}blacc_ceo1.jpg`,
       name: "Joseph Blacc",
       role: "Founder & Head Farmer",
       description: "4th generation farmer with 5+ years experience"
     },
     {
-      image: "/user.jpg",
+      image: `${import.meta.env.BASE_URL}user.jpg`,
       name: "Pending",
       role: "Sustainability Director",
       description: "Specialist in organic farming practices"
     },
     {
-      image: "/user.jpg",
+      image: `${import.meta.env.BASE_URL}user.jpg`,
       name: "Pending",
       role: "Farm Operations",
       description: "Expert in livestock and crop management"
@@ -25,17 +25,17 @@ const About: React.FC = () => {
 
   const farmImages = [
     {
-      image: "/chicken.jpg",
+      image: `${import.meta.env.BASE_URL}chicken.jpg`,
       title: "Sustainable Farming",
       caption: "Our eco-friendly methods preserve the land for future generations"
     },
     {
-      image: "/products.jpg",
+      image: `${import.meta.env.BASE_URL}products.jpg`,
       title: "Organic Produce",
       caption: "Chemical-free fruits and vegetables grown with care"
     },
     {
-      image: "/goats.jpg",
+      image: `${import.meta.env.BASE_URL}goats.jpg`,
       title: "Cultivating Health",
       caption: "Our Priority in Livestock Management"
     }
@@ -46,7 +46,7 @@ const About: React.FC = () => {
       id="story"
       className="py-20 relative min-h-screen bg-cover bg-center bg-fixed"
       style={{
-        backgroundImage: "url('/tractor.jpg')"
+        backgroundImage: `url(${import.meta.env.BASE_URL}tractor.jpg)`
       }}
     >
       {/* Darker overlay for better text contrast */}
