@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight} from "react-icons/fa";
+import { TextRotate } from "./ui/text-rotate";
 
 const Hero: React.FC = () => {
     return (
@@ -33,11 +34,24 @@ const Hero: React.FC = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-left"
                     >
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-                            <span className="text-white">From Our Fields</span>
-                            <br />
-                            <span className="text-white">To Your Table</span>
-                        </h1>
+                                                <div className="mb-6">
+                                                    <h2 className="sr-only">Hero</h2>
+                                                    <div className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
+                                                        <div className="inline-block mr-3">From Our</div>
+                                                        <TextRotate
+                                                            texts={["Fields", "Gardens", "Pastures"]}
+                                                            rotationInterval={3000}
+                                                            mainClassName="inline-block text-white"
+                                                            initial={{ y: "100%" }}
+                                                            animate={{ y: 0 }}
+                                                            exit={{ y: "-120%" }}
+                                                            staggerDuration={0.02}
+                                                        />
+                                                        <div>
+                                                            <span className="block">To Your Table</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                         <p className="text-xl text-white mb-8 max-w-xl">
                             Experience the taste of truly sustainable farming.

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { 
   Sprout, TreePine, Tractor, Carrot
 } from 'lucide-react';
+import TypewriterText from "./TypewriterText";
 
 interface FeatureItem {
   title: string;
@@ -34,6 +35,12 @@ const features: FeatureItem[] = [
 ];
 
 const Feature: React.FC = () => {
+  const [typewriterComplete, setTypewriterComplete] = React.useState(false);
+
+  const handleTypewriterComplete = () => {
+    setTypewriterComplete(true);
+  };
+
   return(
     <section className="py-20 bg-cream">
       <div className="container mx-auto px-6 lg:px-15">
@@ -44,13 +51,28 @@ const Feature: React.FC = () => {
             viewport={{once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-              Why Choose <span className="text-green-800"> Blacc Farms? </span> 
-            </h2>
-            <p className="text-lg text-earth/80 max-w-2xl mx-auto">
-              Discover what makes our sustainable farming practices and fresh produce
-              the preferred choice for health-conscious families.
-            </p>
+            <TypewriterText
+              text="Why Choose Blacc Farms?"
+              speed={75}
+              loop={true}
+              loopDelay={3000}
+              onComplete={handleTypewriterComplete}
+              className="text-4xl md:text-5xl font-bold text-black mb-6 min-h-14 md:min-h-15"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={typewriterComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mt-8"
+            >
+              <p className="text-lg text-earth/80 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
+                We believe in <span className="font-semibold text-earth">sustainable agriculture</span> that nourishes both
+                <br className="hidden sm:block" />
+                your family and the earth. Our <span className="font-semibold text-earth">premium, certified organic produce</span> is
+                <br className="hidden sm:block" />
+                cultivated with integrity, delivering uncompromising quality and freshness.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -66,10 +88,8 @@ const Feature: React.FC = () => {
               <img
                 src={`${import.meta.env.BASE_URL}farmlady.jpg`}
                 alt="Blacc farming"
-                className="w-full h-auto object-cover max-h-[500px] md:max-h-[400px] lg:max-h-[500px]"
+                className="w-full h-auto object-cover max-h-125 md:max-h-100 lg:max-h-125"
               />
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              </div>
             </div>
           </motion.div>
 
@@ -120,41 +140,6 @@ const Feature: React.FC = () => {
       </motion.div>
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-cream to-transparent">
       </div>
-
-      {/*<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-16">
-        <div className="text-center ">
-          <h4 className="text-earth/70 mb-2">
-            Started in
-          </h4>
-          <p className="text-5xl font-bold text-black mb-1"> 
-            2025
-          </p>
-        </div>
-        <div className="text-center">
-          <h4 className="text-earth/70 mb-2">
-            Acres Farmed
-          </h4>
-          <p className="text-5xl font-bold text-black mb-1">
-            10+
-          </p>
-        </div>
-        <div className="text-center">
-          <h4 className="text-earth/70">
-            Families Served
-          </h4>
-          <p className="text-5xl font-bold text-black mb-1"> 
-            500+
-          </p>
-        </div>
-        <div className="text-center">
-          <h4 className="text-earth/70">
-            Team Size
-          </h4>
-          <p className="text-5xl font-bold text-black mb-1"> 
-            10
-          </p>
-        </div>
-      </div> */}
     </section>
   );
 };

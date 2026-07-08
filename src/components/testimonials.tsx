@@ -8,6 +8,7 @@ interface Testimonial {
   company: string;
   content: string;
   rating: number;
+  image: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -18,14 +19,16 @@ const testimonials: Testimonial[] = [
     content:
       "The quality of produce from Blacc Farms is unmatched. Our dishes have never tasted better since we switched to their organic vegetables.",
     rating: 5,
+    image: `${import.meta.env.BASE_URL}chris1.jpg`,
   },
   {
     name: "Meshack Amadi",
     role: "Nutritionist",
-    company: "Wellness First Clinic",
+    company: "Wellness Specialist",
     content:
       "I recommend Blacc Farms to all my clients. Knowing exactly where our food comes from and how it's grown makes all the difference.",
     rating: 4,
+    image: `${import.meta.env.BASE_URL}meshbg.png`,
   },
   {
     name: "Sarah Johnson",
@@ -34,6 +37,7 @@ const testimonials: Testimonial[] = [
     content:
       "Our weekly box from Blacc Farms has transformed how our family eats. The kids actually ask for vegetables now!",
     rating: 5,
+    image: `${import.meta.env.BASE_URL}user.jpg`,
   },
   {
     name: "Solomon Obijuru",
@@ -42,6 +46,7 @@ const testimonials: Testimonial[] = [
     content:
       "Blacc Farms sets the gold standard for sustainable agriculture. Their commitment to regenerative farming is inspiring.",
     rating: 4,
+    image: `${import.meta.env.BASE_URL}user.jpg`,
   },
   {
     name: "Sele Beulah",
@@ -50,6 +55,7 @@ const testimonials: Testimonial[] = [
     content:
       "Featureing Blacc Farms produce in my recipes has been a game-changer. The flavor profile is simply superior to store-bought.",
     rating: 5,
+    image: `${import.meta.env.BASE_URL}user.jpg`,
   },
   {
     name: "Pepple Jedidiah",
@@ -58,6 +64,7 @@ const testimonials: Testimonial[] = [
     content:
       "Our customers consistently rate Blacc Farms produce as the best in store. The shelf life and freshness are outstanding.",
     rating: 4,
+    image: `${import.meta.env.BASE_URL}user.jpg`,
   },
 ];
 
@@ -127,11 +134,23 @@ const Testimonials: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-green/5"
+                className="group relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 border border-green/10"
               >
+                <div className="flex justify-center pt-8">
+                  <div className="relative h-44 w-44 overflow-hidden rounded-full border-4 border-white shadow-[0_20px_45px_rgba(0,0,0,0.18)] ring-1 ring-green/15 bg-linear-to-br from-sage/20 via-green/10 to-white">
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-transparent" />
+                  </div>
+                </div>
+
+                <div className="relative p-8 pt-6 text-center">
                 <Quote
                   size={32}
-                  className="absolute top-6 right-6 text-sage/10 group-hover:text-sage/20 transition-colors duration-300"
+                  className="absolute right-6 top-6 text-sage/10 group-hover:text-sage/20 transition-colors duration-300"
                 />
 
                 <div className="mb-5">
@@ -142,11 +161,11 @@ const Testimonials: React.FC = () => {
                   "{t.content}"
                 </p>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-linear-to-br from-sage to-green flex items-center justify-center text-white font-bold text-lg shadow-md shrink-0">
+                <div className="flex items-center justify-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-linear-to-br from-sage to-green flex items-center justify-center text-white font-bold text-lg shadow-md shrink-0 ring-4 ring-white">
                     {t.name.split(" ").map((n) => n[0]).join("")}
                   </div>
-                  <div>
+                  <div className="text-left">
                     <h4 className="font-semibold text-black text-sm">
                       {t.name}
                     </h4>
@@ -154,6 +173,7 @@ const Testimonials: React.FC = () => {
                       {t.role}, {t.company}
                     </p>
                   </div>
+                </div>
                 </div>
               </motion.div>
             ))}

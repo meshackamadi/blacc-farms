@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, MapPin, Users, Leaf, Clock, Award } from 'lucide-react';
+import TextTypewriter from "./ui/the-typewriter";
 
 const Video: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -15,6 +16,10 @@ const Video: React.FC = () => {
     { number: "50+", label: "Acres of Premium Land", icon: Leaf },
     { number: "100%", label: "Organic Certified", icon: Award },
     { number: "24/7", label: "Farm Monitoring", icon: Clock },
+    { number: "15+", label: "Years of Experience", icon: Award },
+    { number: "500+", label: "Happy Families", icon: Users },
+    { number: "99%", label: "Customer Satisfaction", icon: Award },
+    { number: "365", label: "Days of Harvesting", icon: Leaf },
   ];
 
   return (
@@ -31,9 +36,11 @@ const Video: React.FC = () => {
           <div className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             Virtual Farm Tour
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
-            Experience <span className="text-green-700">Blacc Farms</span> Up Close
-          </h2>
+          <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
+            <TextTypewriter duration={3} className="inline-block">
+              Experience Blacc Farms Up Close
+            </TextTypewriter>
+          </div>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Take an immersive virtual journey through our sustainable farm. Discover our organic farming methods, 
             state-of-the-art facilities, and meet the dedicated team committed to bringing you the freshest produce.
@@ -61,10 +68,11 @@ const Video: React.FC = () => {
               ></iframe>
             ) : (
               <>
-                <div
-                  className="absolute inset-0 bg-cover bg-center z-1"
-                  style={{ backgroundImage: `url(${import.meta.env.BASE_URL}farmlady.jpg)` }}
-                ></div>
+                <img
+                  src={`${import.meta.env.BASE_URL}farmlady.jpg`}
+                  alt="Blacc Farms tour preview"
+                  className="absolute inset-0 w-full h-full object-cover z-1"
+                />
                 <div className="absolute inset-0 bg-linear-to-b from-black/20 via-black/40 to-black/60 group-hover:via-black/50 transition-all duration-300 z-5"></div>
 
                 {/* Play Button */}
@@ -135,35 +143,52 @@ const Video: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* Highlights Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-linear-to-r from-green-800 to-green-700 rounded-3xl p-12 md:p-16 text-white mb-20"
-        >
-          <div className="grid md:grid-cols-3 gap-12">
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="flex justify-center mb-4">
-                  <div className="bg-white/20 p-4 rounded-full backdrop-blur-sm">
-                    <item.icon className="w-8 h-8" />
+        {/* Highlights Marquee Section */}
+        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 bg-linear-to-r from-green-800 to-green-700 text-white py-20 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="px-6 lg:px-15 container mx-auto"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16">Farm Highlights</h3>
+          </motion.div>
+
+          {/* Marquee Container */}
+          <div className="relative overflow-hidden">
+            <motion.div
+              animate={{ x: [0, -100 * highlights.length] }}
+              transition={{
+                duration: highlights.length * 2,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="flex gap-8 md:gap-12 px-6 lg:px-15"
+            >
+              {[...highlights, ...highlights].map((item, index) => (
+                <motion.div
+                  key={`${item.label}-${index}`}
+                  className="shrink-0 text-center min-w-64"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-white/20 p-4 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors duration-300">
+                      <item.icon className="w-8 h-8" />
+                    </div>
                   </div>
-                </div>
-                <div className="text-5xl md:text-6xl font-bold mb-2">{item.number}</div>
-                <p className="text-green-100 text-lg">{item.label}</p>
-              </motion.div>
-            ))}
+                  <div className="text-5xl md:text-6xl font-bold mb-2">{item.number}</div>
+                  <p className="text-green-100 text-lg">{item.label}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Gradient overlays for smooth fade */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-green-800 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-green-700 to-transparent pointer-events-none z-10"></div>
+        </div>
 
         {/* Call to Action */}
         <motion.div
@@ -171,26 +196,28 @@ const Video: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center"
+          className="text-center py-20"
         >
-          <h3 className="text-3xl font-bold text-black mb-6">Ready to Learn More?</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.a
-              href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-green-800 hover:bg-green-800 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
-            >
-              Schedule a Tour
-            </motion.a>
-            <motion.a
-              href="/products"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white hover:bg-gray-50 text-green-700 px-8 py-4 rounded-full font-semibold border-2 border-green-700 transition-all duration-300"
-            >
-              Shop Our Products
-            </motion.a>
+          <div className="container mx-auto px-4">
+            <h3 className="text-3xl font-bold text-black mb-6">Ready to Learn More?</h3>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-green-800 hover:bg-green-800 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
+              >
+                Schedule a Tour
+              </motion.a>
+              <motion.a
+                href="/products"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white hover:bg-gray-50 text-green-700 px-8 py-4 rounded-full font-semibold border-2 border-green-700 transition-all duration-300"
+              >
+                Shop Our Products
+              </motion.a>
+            </div>
           </div>
         </motion.div>
       </div>

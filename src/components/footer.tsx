@@ -134,7 +134,7 @@ const Footer: React.FC = () => {
                     whileTap={{ scale: 0.95 }}
                   >
                     <img
-                      src={`${import.meta.env.BASE_URL}dark_logo.jpg`}
+                      src={`${import.meta.env.BASE_URL}dark_logo.png`}
                       alt="Blacc Farms Logo"
                       className="h-20 w-auto object-contain"
                     />
