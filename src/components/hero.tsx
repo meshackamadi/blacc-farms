@@ -1,14 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaArrowRight} from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { TextRotate } from "./ui/text-rotate";
+import { PrimaryButton } from "./ui/PrimaryButton";
+const heroBgUrl = `${window.location.origin}${import.meta.env.BASE_URL}broiler.webp`;
 
 const Hero: React.FC = () => {
     return (
         <section
             className="relative min-h-screen flex items-center justify-center pt-16"
             style={{
-                backgroundImage: `url(${import.meta.env.BASE_URL}broiler.webp)`,
+                backgroundImage: `url(${heroBgUrl})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
             }}
@@ -32,26 +34,28 @@ const Hero: React.FC = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-left"
+                        className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left"
                     >
-                                                <div className="mb-6">
-                                                    <h2 className="sr-only">Hero</h2>
-                                                    <div className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
-                                                        <div className="inline-block mr-3">From Our</div>
-                                                        <TextRotate
-                                                            texts={["Fields", "Gardens", "Pastures"]}
-                                                            rotationInterval={3000}
-                                                            mainClassName="inline-block text-white"
-                                                            initial={{ y: "100%" }}
-                                                            animate={{ y: 0 }}
-                                                            exit={{ y: "-120%" }}
-                                                            staggerDuration={0.02}
-                                                        />
-                                                        <div>
-                                                            <span className="block">To Your Table</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                        <div className="mb-6 w-full max-w-[min(100%,56rem)]">
+                            <h2 className="sr-only">Hero</h2>
+                            <div className="flex w-full flex-col gap-2 text-[clamp(1.55rem,5.8vw,5rem)] font-bold leading-[0.92] tracking-tight text-white text-balance sm:gap-3">
+                                <div className="flex flex-nowrap items-baseline justify-center gap-3 whitespace-nowrap lg:justify-start">
+                                    <span className="whitespace-nowrap">From Our</span>
+                                    <TextRotate
+                                        texts={["Fields", "Gardens", "Pastures"]}
+                                        rotationInterval={3000}
+                                        mainClassName="inline-flex flex-nowrap items-baseline whitespace-nowrap text-white"
+                                        splitLevelClassName="inline-flex whitespace-nowrap"
+                                        elementLevelClassName="inline-block"
+                                        initial={{ y: "100%" }}
+                                        animate={{ y: 0 }}
+                                        exit={{ y: "-120%" }}
+                                        staggerDuration={0.02}
+                                    />
+                                </div>
+                                <span className="block whitespace-nowrap">To Your Table</span>
+                            </div>
+                        </div>
 
                         <p className="text-xl text-white mb-8 max-w-xl">
                             Experience the taste of truly sustainable farming.
@@ -60,22 +64,12 @@ const Hero: React.FC = () => {
                         </p>
 
                         <div className="flex flex-wrap gap-4 mb-10">
-                            <motion.button
-                                whileHover={{ scale: 1.05, backgroundColor: "#1f5233" }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-green-800 border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 cursor-pointer"
-                            >
+                            <PrimaryButton icon={<FaArrowRight />}>
                                 Shop Fresh Produce
-                                <FaArrowRight className="text-sm" />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.05, backgroundColor: "#1f5233" }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-green-800 border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 cursor-pointer"
-                            >
+                            </PrimaryButton>
+                            <PrimaryButton icon={<FaArrowRight />}>
                                 Schedule a Tour
-                                <FaArrowRight className="text-sm" />
-                            </motion.button>
+                            </PrimaryButton>
                         </div>
                     </motion.div>
                 </div>    
