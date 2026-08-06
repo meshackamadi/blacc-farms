@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, MapPin, Users, Leaf, Clock, Award } from 'lucide-react';
+import { Play, MapPin, HeartHandshake, Users, Leaf, Clock, Award } from 'lucide-react';
 import TextTypewriter from "./ui/the-typewriter";
 
 const Video: React.FC = () => {
@@ -8,7 +8,7 @@ const Video: React.FC = () => {
 
   const features = [
     { icon: MapPin, label: "360° Tour", description: "Explore every corner of our farm" },
-    { icon: Users, label: "Meet the Team", description: "Get to know our passionate farmers" },
+    { icon: HeartHandshake, label: "Our Farm Family", description: "Meet the passionate hands nourishing our local community" },
     { icon: Leaf, label: "Sustainability", description: "See our eco-friendly practices" },
   ];
 
@@ -43,7 +43,7 @@ const Video: React.FC = () => {
           </div>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Take an immersive virtual journey through our sustainable farm. Discover our organic farming methods, 
-            state-of-the-art facilities, and meet the dedicated team committed to bringing you the freshest produce.
+            community-centered values, and meet the warm, dedicated farm family nourishing our neighborhood with fresh produce.
           </p>
         </motion.div>
 
@@ -190,22 +190,60 @@ const Video: React.FC = () => {
           <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-green-700 to-transparent pointer-events-none z-10"></div>
         </div>
 
-        {/* Call to Action */}
+        {/* Call to Action & Business Hours */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center py-20"
+          className="py-16"
         >
-          <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-black mb-6">Ready to Learn More?</h3>
+          {/* Opening Hours Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto mb-16 p-8 rounded-3xl bg-linear-to-r from-green-900 via-green-800 to-emerald-900 text-white shadow-2xl relative overflow-hidden border border-green-700/50"
+          >
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+              <div className="flex items-center gap-5 text-left">
+                <div className="bg-white/10 p-4 rounded-2xl backdrop-blur-md shrink-0">
+                  <Clock className="w-10 h-10 text-emerald-300" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">Farm Store & Visitor Hours</span>
+                  </div>
+                  <h4 className="text-2xl font-bold text-white mb-2">We're Open For Visitors</h4>
+                  <div className="space-y-1 text-green-100 text-sm">
+                    <p><span className="font-semibold text-white">Monday – Saturday:</span> 8:00 AM – 6:00 PM</p>
+                    <p><span className="font-semibold text-white">Sunday:</span> 10:00 AM – 4:00 PM</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <motion.a
+                  href="#farm store"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-emerald-400 hover:bg-emerald-300 text-green-950 px-6 py-3 rounded-full font-bold text-center text-sm transition-all duration-300 shadow-md"
+                >
+                  Visit Farm Store
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-3xl font-bold text-black mb-6">Ready to Experience Blacc Farms?</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-green-800 hover:bg-green-800 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
+                className="bg-green-800 hover:bg-green-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
               >
                 Schedule a Tour
               </motion.a>

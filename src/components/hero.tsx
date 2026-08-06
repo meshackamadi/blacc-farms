@@ -8,7 +8,7 @@ const heroBgUrl = `${window.location.origin}${import.meta.env.BASE_URL}broiler.w
 const Hero: React.FC = () => {
     return (
         <section
-            className="relative min-h-screen flex items-center justify-center pt-16"
+            className="relative min-h-screen flex items-center justify-center pt-24 sm:pt-28"
             style={{
                 backgroundImage: `url(${heroBgUrl})`,
                 backgroundSize: 'cover',

@@ -26,6 +26,15 @@ const columns: FooterColumn[] = [
     ],
   },
   {
+    title: "Hours & Visit",
+    links: [
+      { label: "Mon–Sat: 8 AM – 6 PM", href: "#farm store" },
+      { label: "Sun: 10 AM – 4 PM", href: "#farm store" },
+      { label: "Farm Store", href: "#farm store" },
+      { label: "Book a Tour", href: "#farm tour" },
+    ],
+  },
+  {
     title: "Company",
     links: [
       { label: "About Us", href: "#" },
@@ -41,15 +50,6 @@ const columns: FooterColumn[] = [
       { label: "Recipes", href: "#" },
       { label: "Sustainability", href: "#" },
       { label: "FAQ", href: "#" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Shipping Policy", href: "#" },
-      { label: "Returns", href: "#" },
     ],
   },
 ];

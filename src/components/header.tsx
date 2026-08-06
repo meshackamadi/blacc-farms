@@ -21,18 +21,18 @@ const Header: React.FC = () => {
                 href: "#team",
                 description: "Meet the Blacc Farmers"
             },
-            {   
+            {
                 icon: <FaLeaf />,
                 label: "Certifications",
-                href: "#certifications", 
-                description: "Organic & quality standards" 
+                href: "#certifications",
+                description: "Organic & quality standards"
             },
             {
                 icon: <FaLeaf />,
                 label: "Testimonies",
                 href: "#testimonies",
                 description: "Hear from our satisfied customers"
-            }    
+            }
         ],
         Products: [
             { icon: <GiFruitBowl />, label: "Fresh Produce", href: "#produce", description: "Fruits & vegetables" },
@@ -66,6 +66,21 @@ const Header: React.FC = () => {
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-green/10 shadow-md">
+            {/* Top Info Bar for Business Hours */}
+            <div className="bg-green-900 text-white text-xs py-2 px-6 border-b border-green-800/50">
+                <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                    <div className="flex items-center gap-2 font-medium">
+                        <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span className="text-emerald-300 font-semibold">Open Today:</span>
+                        <span>Mon–Sat: 8:00 AM – 6:00 PM | Sun: 10:00 AM – 4:00 PM</span>
+                    </div>
+                    <div className="hidden md:flex items-center gap-4 text-green-200 text-xs">
+                        <span>📍 144 Port Harcourt Airport Road, Port Harcourt</span>
+                        <span>📞 (+234) 0815-068-5110</span>
+                    </div>
+                </div>
+            </div>
+
             <div className="container mx-auto px-6 lg:px-15">
                 <div className="flex justify-between items-center py-3 lg:py-4">
                     {/* Logo */}
@@ -78,8 +93,8 @@ const Header: React.FC = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <img 
-                            src={`${import.meta.env.BASE_URL}blaccfarmlogo1.png`} 
+                        <img
+                            src={`${import.meta.env.BASE_URL}blaccfarmlogo1.png`}
                             alt="Blacc Farms Logo"
                             className="h-12 w-30 lg:h-20 lg:w-60 object-contain drop-shadow-xl hover:drop-shadow-3xl transition-all duration-300 brightness-110"
                         />
