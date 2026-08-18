@@ -49,15 +49,15 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
   (
     {
       texts,
-        transition = { type: "tween", duration: 0.75, ease: [0.16, 1, 0.3, 1] },
-        initial = { y: "60%", opacity: 0, scale: 0.92 },
-        animate = { y: 0, opacity: 1, scale: 1 },
-        exit = { y: "-60%", opacity: 0, scale: 0.92 },
-      animatePresenceMode = "wait",
+      transition = { type: "spring", damping: 25, stiffness: 350 },
+      initial = { y: "100%", opacity: 0 },
+      animate = { y: 0, opacity: 1 },
+      exit = { y: "-100%", opacity: 0 },
+      animatePresenceMode = "popLayout",
       animatePresenceInitial = false,
       rotationInterval = 2000,
-      staggerDuration = 0.015,
-      staggerFrom = "center",
+      staggerDuration = 0.013,
+      staggerFrom = "first",
       loop = true,
       auto = true,
       splitBy = "characters",
@@ -125,7 +125,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
       const nextIndex = currentTextIndex === texts.length - 1
         ? (loop ? 0 : currentTextIndex)
         : currentTextIndex + 1
-      
+
       if (nextIndex !== currentTextIndex) {
         handleIndexChange(nextIndex)
       }
@@ -135,7 +135,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
       const prevIndex = currentTextIndex === 0
         ? (loop ? texts.length - 1 : currentTextIndex)
         : currentTextIndex - 1
-      
+
       if (prevIndex !== currentTextIndex) {
         handleIndexChange(prevIndex)
       }
@@ -171,7 +171,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
 
     return (
       <motion.span
-        className={cn("flex flex-wrap whitespace-pre-wrap", mainClassName || "")}
+        className={cn("inline-flex overflow-y-clip overflow-x-visible py-1 leading-none", mainClassName || "")}
         {...props}
         layout
         transition={transition}
@@ -194,9 +194,9 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
             {(splitBy === "characters"
               ? (elements as WordObject[])
               : (elements as string[]).map((el, i) => ({
-                  characters: [el],
-                  needsSpace: i !== elements.length - 1,
-                }))
+                characters: [el],
+                needsSpace: i !== elements.length - 1,
+              }))
             ).map((wordObj, wordIndex, array) => {
               const previousCharsCount = array
                 .slice(0, wordIndex)
@@ -213,18 +213,18 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
                       animate={animate}
                       exit={exit}
                       key={charIndex}
-                        transition={{
-                          ...transition,
-                          duration: (transition as Transition).duration ?? 0.5,
-                          ease: (transition as Transition).ease ?? [0.22, 1, 0.36, 1],
-                          delay: getStaggerDelay(
-                            previousCharsCount + charIndex,
-                            array.reduce(
-                              (sum, word) => sum + word.characters.length,
-                              0
-                            )
-                          ),
-                        }}
+                      transition={{
+                        ...transition,
+                        duration: (transition as Transition).duration ?? 0.5,
+                        ease: (transition as Transition).ease ?? [0.22, 1, 0.36, 1],
+                        delay: getStaggerDelay(
+                          previousCharsCount + charIndex,
+                          array.reduce(
+                            (sum, word) => sum + word.characters.length,
+                            0
+                          )
+                        ),
+                      }}
                       className={cn("inline-block", elementLevelClassName || "")}
                     >
                       {char}

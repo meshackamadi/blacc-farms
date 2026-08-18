@@ -43,14 +43,16 @@ const Hero: React.FC = () => {
                                     <span className="whitespace-nowrap">From Our</span>
                                     <TextRotate
                                         texts={["Fields", "Gardens", "Pastures"]}
-                                        rotationInterval={3000}
-                                        mainClassName="inline-flex flex-nowrap items-baseline whitespace-nowrap text-white"
+                                        rotationInterval={2800}
+                                        animatePresenceMode="popLayout"
+                                        mainClassName="inline-flex flex-nowrap items-baseline whitespace-nowrap text-green-700 font-extrabold px-1"
                                         splitLevelClassName="inline-flex whitespace-nowrap"
                                         elementLevelClassName="inline-block"
-                                        initial={{ y: "100%" }}
-                                        animate={{ y: 0 }}
-                                        exit={{ y: "-120%" }}
-                                        staggerDuration={0.02}
+                                        initial={{ y: "100%", opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        exit={{ y: "-100%", opacity: 0 }}
+                                        transition={{ type: "spring", damping: 25, stiffness: 350 }}
+                                        staggerDuration={0.015}
                                     />
                                 </div>
                                 <span className="block whitespace-nowrap">To Your Table</span>
@@ -72,7 +74,7 @@ const Hero: React.FC = () => {
                             </PrimaryButton>
                         </div>
                     </motion.div>
-                </div>    
+                </div>
             </div>
         </section>
     );
