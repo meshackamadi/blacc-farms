@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+/* Tailwind v4: class-based dark mode */
+/* This replaces `darkMode: 'class'` from v3's tailwind.config.js */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* Smooth theme transition */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 200ms;
+  /* speed of theme transition */
+  transition-timing-function: ease-in-out;
+}
+
+/* Exclude motion-sensitive elements from the global transition */
+[data-framer-motion],
+[style*="transform"],
+.no-theme-transition {
+  transition: none !important;
+}
+
+/* Light mode (default) */
+:root {
+  color-scheme: light;
+}
+
+/* Dark mode (applied via .dark on <html>) */
+.dark {
+  color-scheme: dark;
+
+  --dm-bg-primary: #0a1f14;
+  --dm-bg-secondary: #0d2818;
+  --dm-bg-card: #1a3a28;
+  --dm-bg-card-hover: #244f38;
+  --dm-text-primary: #f9fafb;
+  --dm-text-secondary: #b8d4b8;
+  --dm-text-muted: #8aa88a;
+  --dm-border: #2a4a38;
+  --dm-shadow: rgba(0, 20, 0, 0.4);
+  --dm-btn-bg: #1f5233;
+  --dm-btn-hover: #2a6b44;
+}

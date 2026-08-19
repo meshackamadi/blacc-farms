@@ -135,7 +135,7 @@ const About: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
-                key={member.name}
+                key={`${member.name}-${member.role}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

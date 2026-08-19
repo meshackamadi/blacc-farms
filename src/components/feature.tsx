@@ -42,7 +42,7 @@ const Feature: React.FC = () => {
   };
 
   return(
-    <section className="py-20 bg-cream">
+    <section className="py-20 bg-cream dark:bg-[#0d2818]">
       <div className="container mx-auto px-6 lg:px-15">
         <div className="text-center mb-16">
           <motion.div
@@ -57,7 +57,7 @@ const Feature: React.FC = () => {
               loop={true}
               loopDelay={3000}
               onComplete={handleTypewriterComplete}
-              className="text-4xl md:text-5xl font-bold text-black mb-6 min-h-14 md:min-h-15"
+              className="text-4xl md:text-5xl font-bold text-black dark:text-[#f9fafb] mb-6 min-h-14 md:min-h-15"
             />
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -65,10 +65,10 @@ const Feature: React.FC = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="mt-8"
             >
-              <p className="text-lg text-earth/80 max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
-                We believe in <span className="font-semibold text-earth">sustainable agriculture</span> that nourishes both
+              <p className="text-lg text-earth/80 dark:text-[#b8d4b8] max-w-2xl mx-auto leading-relaxed font-light tracking-wide">
+                We believe in <span className="font-semibold text-earth dark:text-[#f9fafb]">sustainable agriculture</span> that nourishes both
                 <br className="hidden sm:block" />
-                your family and the earth. Our <span className="font-semibold text-earth">premium, certified organic produce</span> is
+                your family and the earth. Our <span className="font-semibold text-earth dark:text-[#f9fafb]">premium, certified organic produce</span> is
                 <br className="hidden sm:block" />
                 cultivated with integrity, delivering uncompromising quality and freshness.
               </p>
@@ -84,7 +84,7 @@ const Feature: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl dark:shadow-[0_25px_60px_rgba(0,20,0,0.5)]">
               <img
                 src={`${import.meta.env.BASE_URL}farmlady.jpg`}
                 alt="Blacc farming"
@@ -108,15 +108,15 @@ const Feature: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.2 }}
                 whileHover={{ x: 20 }}
-                className="flex items-start gap-4 p-6 rounded-full bg-white shadow-lg hover:shadow-xl hover:bg-green-800 transition-all duration-300 group border border-green/10 cursor-pointer">
-                <div className="bg-green/10 p-3 rounded-full group-hover:bg-green/20 transition-colors duration-300 ">
+                className="flex items-start gap-4 p-6 rounded-full bg-white dark:bg-[#1a3a28] shadow-lg dark:shadow-[0_4px_20px_rgba(0,20,0,0.3)] hover:shadow-xl hover:bg-green-800 dark:hover:bg-[#244f38] transition-all duration-300 group border border-green/10 dark:border-[#2a4a38] cursor-pointer">
+                <div className="bg-green/10 dark:bg-emerald-900/40 p-3 rounded-full group-hover:bg-green/20 transition-colors duration-300 ">
                   {feature.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-black mb-1">
+                  <h3 className="text-xl font-semibold text-black dark:text-[#f9fafb] group-hover:text-white mb-1">
                     {feature.title}
                   </h3>
-                  <p className="text-earth/70">
+                  <p className="text-earth/70 dark:text-[#8aa88a] group-hover:text-white/80">
                     {feature.description}
                   </p>
                 </div>
@@ -138,7 +138,7 @@ const Feature: React.FC = () => {
             </div>
         </div>
       </motion.div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-cream to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-cream dark:from-[#0d2818] to-transparent">
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ const Video: React.FC = () => {
   ];
 
   return (
-    <section id="farm tour" className="py-24 bg-linear-to-b from-white via-cream to-white overflow-hidden">
+    <section id="farm tour" className="py-24 bg-white dark:bg-[#0a1f14] overflow-hidden">
       <div className="container mx-auto px-6 lg:px-15">
         {/* Section Header */}
         <motion.div
@@ -33,15 +33,15 @@ const Video: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <div className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-green-100 dark:bg-[#1a3a28] text-green-800 dark:text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold mb-4 border dark:border-[#2a4a38]">
             Virtual Farm Tour
           </div>
-          <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
+          <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-[#f9fafb] mb-6">
             <TextTypewriter duration={3} className="inline-block">
               Experience Blacc Farms Up Close
             </TextTypewriter>
           </div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-700 dark:text-[#b8d4b8] max-w-3xl mx-auto leading-relaxed">
             Take an immersive virtual journey through our sustainable farm. Discover our organic farming methods, 
             community-centered values, and meet the warm, dedicated farm family nourishing our neighborhood with fresh produce.
           </p>
@@ -55,7 +55,7 @@ const Video: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="relative max-w-5xl mx-auto mb-20"
         >
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-video bg-black group cursor-pointer">
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl dark:shadow-[0_25px_80px_rgba(0,20,0,0.6)] aspect-video bg-black group cursor-pointer">
             <div className="absolute inset-0 bg-linear-to-br from-green-800/20 to-earth/20 z-5"></div>
             
             {isPlaying ? (
@@ -108,8 +108,8 @@ const Video: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-10 text-center"
           >
-            <h3 className="text-2xl font-bold text-black mb-3">A Journey Through Our Farm</h3>
-            <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            <h3 className="text-2xl font-bold text-black dark:text-[#f9fafb] mb-3">A Journey Through Our Farm</h3>
+            <p className="text-gray-700 dark:text-[#b8d4b8] max-w-3xl mx-auto leading-relaxed">
               In this comprehensive tour, you'll walk through our sustainable farming operations, learn about our 
               organic certification process, and discover the innovative techniques we use to grow the highest quality produce 
               while protecting the environment for future generations.
@@ -132,19 +132,19 @@ const Video: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex flex-col items-center text-center p-8 rounded-2xl bg-linear-to-br from-green-50 to-white border border-green-100 hover:border-green-300 hover:shadow-lg transition-all duration-300"
+              className="flex flex-col items-center text-center p-8 rounded-2xl bg-green-50 dark:bg-[#1a3a28] border border-green-100 dark:border-[#2a4a38] hover:border-green-300 dark:hover:border-emerald-600 hover:shadow-lg dark:hover:shadow-[0_8px_32px_rgba(0,20,0,0.4)] transition-all duration-300"
             >
-              <div id="certifications" className="bg-green-100 p-4 rounded-full mb-4 group-hover:bg-green-200 transition-colors duration-300">
-                <feature.icon className="w-8 h-8 text-green-700" />
+              <div id="certifications" className="bg-green-100 dark:bg-[#244f38] p-4 rounded-full mb-4 transition-colors duration-300">
+                <feature.icon className="w-8 h-8 text-green-700 dark:text-emerald-400" />
               </div>
-              <h4 className="text-xl font-bold text-black mb-2">{feature.label}</h4>
-              <p className="text-gray-700">{feature.description}</p>
+              <h4 className="text-xl font-bold text-black dark:text-[#f9fafb] mb-2">{feature.label}</h4>
+              <p className="text-gray-700 dark:text-[#b8d4b8]">{feature.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Highlights Marquee Section */}
-        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 bg-linear-to-r from-green-800 to-green-700 text-white py-20 overflow-hidden">
+        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 bg-linear-to-r from-green-800 to-green-700 dark:from-[#0d2818] dark:to-[#1a3a28] dark:border-y dark:border-[#2a4a38] text-white py-20 overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ const Video: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="px-6 lg:px-15 container mx-auto"
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16">Farm Highlights</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-center mb-16 text-white dark:text-[#f9fafb]">Farm Highlights</h3>
           </motion.div>
 
           {/* Marquee Container */}
@@ -174,20 +174,20 @@ const Video: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex justify-center mb-4">
-                    <div className="bg-white/20 p-4 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors duration-300">
-                      <item.icon className="w-8 h-8" />
+                    <div className="bg-white/20 dark:bg-[#244f38]/80 p-4 rounded-full backdrop-blur-sm hover:bg-white/30 dark:hover:bg-[#2a6b44]/80 transition-colors duration-300">
+                      <item.icon className="w-8 h-8 dark:text-emerald-400" />
                     </div>
                   </div>
-                  <div className="text-5xl md:text-6xl font-bold mb-2">{item.number}</div>
-                  <p className="text-green-100 text-lg">{item.label}</p>
+                  <div className="text-5xl md:text-6xl font-bold mb-2 text-white dark:text-[#f9fafb]">{item.number}</div>
+                  <p className="text-green-100 dark:text-[#b8d4b8] text-lg">{item.label}</p>
                 </motion.div>
               ))}
             </motion.div>
           </div>
 
           {/* Gradient overlays for smooth fade */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-green-800 to-transparent pointer-events-none z-10"></div>
-          <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-green-700 to-transparent pointer-events-none z-10"></div>
+          <div className="absolute inset-y-0 left-0 w-24 bg-linear-to-r from-green-800 dark:from-[#0d2818] to-transparent pointer-events-none z-10"></div>
+          <div className="absolute inset-y-0 right-0 w-24 bg-linear-to-l from-green-700 dark:from-[#1a3a28] to-transparent pointer-events-none z-10"></div>
         </div>
 
         {/* Call to Action & Business Hours */}
@@ -204,11 +204,11 @@ const Video: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto mb-16 p-8 rounded-3xl bg-linear-to-r from-green-900 via-green-800 to-emerald-900 text-white shadow-2xl relative overflow-hidden border border-green-700/50"
+            className="max-w-4xl mx-auto mb-16 p-8 rounded-3xl bg-linear-to-r from-green-900 via-green-800 to-emerald-900 dark:from-[#0d2818] dark:via-[#1a3a28] dark:to-[#0d2818] text-white shadow-2xl relative overflow-hidden border border-green-700/50 dark:border-[#2a4a38]"
           >
             <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
               <div className="flex items-center gap-5 text-left">
-                <div className="bg-white/10 p-4 rounded-2xl backdrop-blur-md shrink-0">
+                <div className="bg-white/10 dark:bg-[#244f38] p-4 rounded-2xl backdrop-blur-md shrink-0">
                   <Clock className="w-10 h-10 text-emerald-300" />
                 </div>
                 <div>
@@ -217,7 +217,7 @@ const Video: React.FC = () => {
                     <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">Farm Store & Visitor Hours</span>
                   </div>
                   <h4 className="text-2xl font-bold text-white mb-2">We're Open For Visitors</h4>
-                  <div className="space-y-1 text-green-100 text-sm">
+                  <div className="space-y-1 text-green-100 dark:text-[#b8d4b8] text-sm">
                     <p><span className="font-semibold text-white">Monday – Saturday:</span> 8:00 AM – 6:00 PM</p>
                     <p><span className="font-semibold text-white">Sunday:</span> 10:00 AM – 4:00 PM</p>
                   </div>
@@ -237,13 +237,13 @@ const Video: React.FC = () => {
           </motion.div>
 
           <div className="container mx-auto px-4 text-center">
-            <h3 className="text-3xl font-bold text-black mb-6">Ready to Experience Blacc Farms?</h3>
+            <h3 className="text-3xl font-bold text-black dark:text-[#f9fafb] mb-6">Ready to Experience Blacc Farms?</h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
                 href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-green-800 hover:bg-green-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
+                className="bg-green-800 dark:bg-[#1f5233] hover:bg-green-700 dark:hover:bg-[#2a6b44] text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg"
               >
                 Schedule a Tour
               </motion.a>
@@ -251,7 +251,7 @@ const Video: React.FC = () => {
                 href="/products"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white hover:bg-gray-50 text-green-700 px-8 py-4 rounded-full font-semibold border-2 border-green-700 transition-all duration-300"
+                className="bg-white dark:bg-[#1a3a28] hover:bg-gray-50 dark:hover:bg-[#244f38] text-green-700 dark:text-emerald-400 px-8 py-4 rounded-full font-semibold border-2 border-green-700 dark:border-[#2a6b44] transition-all duration-300"
               >
                 Shop Our Products
               </motion.a>
