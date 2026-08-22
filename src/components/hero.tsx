@@ -39,19 +39,21 @@ const Hero: React.FC = () => {
                         <div className="mb-6 w-full max-w-[min(100%,56rem)]">
                             <h2 className="sr-only">Hero</h2>
                             <div className="flex w-full flex-col gap-2 text-[clamp(1.55rem,5.8vw,5rem)] font-bold leading-[0.92] tracking-tight text-white text-balance sm:gap-3">
-                                <div className="flex flex-nowrap items-baseline justify-center gap-3 whitespace-nowrap lg:justify-start">
+                                <div className="flex flex-nowrap items-baseline justify-center gap-3 lg:justify-start">
                                     <span className="whitespace-nowrap">From Our</span>
-                                    <TextRotate
-                                        texts={["Fields", "Gardens", "Pastures"]}
-                                        rotationInterval={3000}
-                                        mainClassName="inline-flex flex-nowrap items-baseline whitespace-nowrap text-white"
-                                        splitLevelClassName="inline-flex whitespace-nowrap"
-                                        elementLevelClassName="inline-block"
-                                        initial={{ y: "100%" }}
-                                        animate={{ y: 0 }}
-                                        exit={{ y: "-120%" }}
-                                        staggerDuration={0.02}
-                                    />
+                                    <span className="relative inline-flex h-[1em] min-w-[6.4ch] overflow-hidden">
+                                        <TextRotate
+                                            texts={["Fields", "Gardens", "Pastures"]}
+                                            rotationInterval={3000}
+                                            mainClassName="inline-flex whitespace-nowrap"
+                                            splitLevelClassName="inline-flex"
+                                            elementLevelClassName="inline-block"
+                                            initial={{ y: "100%" }}
+                                            animate={{ y: 0 }}
+                                            exit={{ y: "-100%" }}
+                                            staggerDuration={0.02}
+                                        />
+                                    </span>
                                 </div>
                                 <span className="block whitespace-nowrap">To Your Table</span>
                             </div>
@@ -72,7 +74,7 @@ const Hero: React.FC = () => {
                             </PrimaryButton>
                         </div>
                     </motion.div>
-                </div>    
+                </div>
             </div>
         </section>
     );
