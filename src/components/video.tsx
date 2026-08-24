@@ -85,8 +85,8 @@ const Video: React.FC = () => {
                 >
                   <motion.div
                     animate={{ scale: [1, 1.15, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="bg-green-800 hover:bg-green-700 text-white p-8 rounded-full shadow-2xl transition-all duration-300 backdrop-blur-sm"
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="bg-green-800 hover:bg-green-700 text-white p-8 rounded-full shadow-2xl transition-all duration-300 will-change-transform"
                   >
                     <Play size={56} fill="white" />
                   </motion.div>
@@ -164,7 +164,7 @@ const Video: React.FC = () => {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="flex gap-8 md:gap-12 px-6 lg:px-15"
+              className="flex gap-8 md:gap-12 px-6 lg:px-15 will-change-transform"
             >
               {[...highlights, ...highlights].map((item, index) => (
                 <motion.div
@@ -174,7 +174,7 @@ const Video: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex justify-center mb-4">
-                    <div className="bg-white/20 dark:bg-[#244f38]/80 p-4 rounded-full backdrop-blur-sm hover:bg-white/30 dark:hover:bg-[#2a6b44]/80 transition-colors duration-300">
+                    <div className="bg-white/20 dark:bg-[#244f38]/80 p-4 rounded-full hover:bg-white/30 dark:hover:bg-[#2a6b44]/80 transition-colors duration-300">
                       <item.icon className="w-8 h-8 dark:text-emerald-400" />
                     </div>
                   </div>

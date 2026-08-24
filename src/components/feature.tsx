@@ -127,9 +127,10 @@ const Feature: React.FC = () => {
       </div>
 
       <motion.div
+        style={{ x: "-50%" }}
         animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-10 left-1/2 will-change-transform"
         >
         <div className="flex flex-col items-center gap-2">
             <span className="text-white text-sm">Explore More</span>

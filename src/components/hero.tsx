@@ -17,14 +17,14 @@ const Hero: React.FC = () => {
         >
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <motion.div
-                    className="absolute top-40 left-10 w-40 h-40 bg-sage/10 rounded-full blur-3xl"
+                    className="absolute top-40 left-10 w-40 h-40 bg-sage/10 rounded-full blur-3xl will-change-transform"
                     animate={{ y: [0, 30, 0] }}
-                    transition={{ duration: 8, repeat: Infinity }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
-                    className="absolute bottom-20 right-10 w-60 h-60 bg-sun/10 rounded-full blur-3xl"
+                    className="absolute bottom-20 right-10 w-60 h-60 bg-sun/10 rounded-full blur-3xl will-change-transform"
                     animate={{ y: [0, -30, 0] }}
-                    transition={{ duration: 10, repeat: Infinity }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
                 />
             </div>
 

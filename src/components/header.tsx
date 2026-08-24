@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaShoppingCart, FaSearch, FaLeaf, FaBars, FaTimes } from "react-icons/fa";
-import { GiFarmTractor, GiFruitBowl, GiChicken } from "react-icons/gi";
+import { FaChevronDown, FaUsers, FaHouse, FaAward, FaShoppingCart, FaSearch, FaLeaf, FaBars, FaTimes, FaQuoteLeft } from "react-icons/fa";
+import { GiFarmTractor, } from "react-icons/gi";
 import ThemeToggle from "./ui/ThemeToggle";
 
 const Header: React.FC = () => {
@@ -17,49 +17,81 @@ const Header: React.FC = () => {
                 description: "History & Mission of Blacc Farms"
             },
             {
-                icon: <GiChicken />,
+                icon: <FaUsers />,
                 label: "Our Team",
                 href: "#team",
                 description: "Meet the Blacc Farmers"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaAward />,
                 label: "Certifications",
                 href: "#certifications",
                 description: "Organic & quality standards"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaQuoteLeft />,
                 label: "Testimonies",
                 href: "#testimonies",
                 description: "Hear from our satisfied customers"
             }
         ],
-        Products: [
-            { icon: <GiFruitBowl />, label: "Fresh Produce", href: "#produce", description: "Fruits & vegetables" },
-            { icon: <GiChicken />, label: "Livestock", href: "#produce", description: "Meat & poultry" },
-            { icon: <FaLeaf />, label: "Dairy & Eggs", href: "#produce", description: "Fresh daily" },
-            { icon: <FaLeaf />, label: "Seasonal Specials", href: "#produce", description: "What's in season" },
-            { icon: <FaLeaf />, label: "Farm Boxes", href: "#produce", description: "Subscription boxes" },
-        ],
         Visit: [
-            { icon: <FaLeaf />, label: "Farm Store", href: "#farm store", description: "Location & hours" },
-            { icon: <FaLeaf />, label: "Farm Tours", href: "#farm tour", description: "Guided experiences" },
-            { icon: <FaLeaf />, label: "Events", href: "/visit#events", description: "Workshops & festivals" },
-            { icon: <FaLeaf />, label: "U-Pick", href: "/visit#upick", description: "Pick your own" },
+            {
+                icon: <FaHouse />,
+                label: "Farm Store",
+                href: "#farm store",
+                description: "Location & hours"
+            },
+            {
+                icon: <FaLeaf />,
+                label: "Farm Tours",
+                href: "#farm tour",
+                description: "Guided experiences"
+            },
+            {
+                icon: <FaLeaf />,
+                label: "Events",
+                href: "/visit#events",
+                description: "Workshops & festivals"
+            },
+            {
+                icon: <FaLeaf />,
+                label: "U-Pick",
+                href: "/visit#upick",
+                description: "Pick your own"
+            },
         ],
         Learn: [
-            { icon: <FaLeaf />, label: "Blog", href: "#blog", description: "Farm updates & tips" },
-            { icon: <FaLeaf />, label: "Recipes", href: "/learn#recipes", description: "Seasonal recipes" },
-            { icon: <FaLeaf />, label: "Growing Guide", href: "/learn#guide", description: "Gardening tips" },
-            { icon: <FaLeaf />, label: "FAQ", href: "/learn#faq", description: "Common questions" },
+            {
+                icon: <FaLeaf />,
+                label: "Blog",
+                href: "#blog",
+                description: "Farm updates & tips"
+            },
+            {
+                icon: <FaLeaf />,
+                label: "Recipes",
+                href: "/learn#recipes",
+                description: "Seasonal recipes"
+            },
+            {
+                icon: <FaLeaf />,
+                label: "Growing Guide",
+                href: "/learn#guide",
+                description: "Gardening tips"
+            },
+            {
+                icon: <FaLeaf />,
+                label: "FAQ",
+                href: "/learn#faq",
+                description: "Common questions"
+            },
         ],
     };
 
     const mainNavItems = [
         { label: "Home", href: "/" },
         { label: "About", href: "/about", hasDropdown: true },
-        { label: "Products", href: "/products", hasDropdown: true },
         { label: "Visit", href: "/visit", hasDropdown: true },
         { label: "Learn", href: "/learn", hasDropdown: true },
         { label: "Contact", href: "#blog" },
@@ -101,60 +133,210 @@ const Header: React.FC = () => {
                         />
                     </motion.a>
 
+                    {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center space-x-1">
                         {mainNavItems.map((item) => (
-                            <div key={item.label} className="relative group">
+                            <div
+                                key={item.label}
+                                className="relative"
+                                onMouseEnter={() => {
+                                    if (item.hasDropdown) {
+                                        setActiveDropdown(item.label);
+                                    }
+                                }}
+                                onMouseLeave={() => {
+                                    setActiveDropdown(null);
+                                }}
+                            >
+                                {/* Navigation Item */}
                                 <motion.a
                                     href={item.href}
-                                    className="flex items-center space-x-1 text-gray-700 dark:text-[#b8d4b8] hover:text-green-800 dark:hover:text-white transition-colors duration-300 font-medium py-2 px-3 rounded-lg hover:bg-green-50 dark:hover:bg-[#1a3a28]"
-                                    onMouseEnter={() => setActiveDropdown(item.hasDropdown ? item.label : null)}
-                                    onMouseLeave={() => setActiveDropdown(null)}
-                                    whileHover={{ scale: 1.02 }}
+                                    className={`
+                                    flex items-center gap-2
+                                    rounded-lg px-3 py-2
+                                    font-medium
+                                    transition-colors duration-200
+                                    ${activeDropdown === item.label
+                                            ? "bg-green-50 text-green-800 dark:bg-[#1a3a28] dark:text-white"
+                                            : "text-gray-700 hover:bg-green-50 hover:text-green-800 dark:text-[#b8d4b8] dark:hover:bg-[#1a3a28] dark:hover:text-white"
+                                        }
+                                `}
                                     whileTap={{ scale: 0.98 }}
                                 >
                                     <span>{item.label}</span>
-                                    {item.hasDropdown && <FaChevronDown className="text-xs transition-transform duration-300 group-hover:rotate-180" />}
+
+                                    {item.hasDropdown && (
+                                        <FaChevronDown
+                                            className={`text-[10px] transition-transform duration-300 ${activeDropdown === item.label
+                                                ? "rotate-180"
+                                                : ""
+                                                }`}
+                                        />
+                                    )}
                                 </motion.a>
 
+                                {/* Dropdown */}
                                 {item.hasDropdown && (
                                     <AnimatePresence>
                                         {activeDropdown === item.label && (
                                             <motion.div
-                                                initial={{ opacity: 0, y: 10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: 10 }}
-                                                transition={{ duration: 0.2 }}
-                                                className="absolute top-full left-0 mt-1 w-80 bg-white dark:bg-[#1a3a28] rounded-xl shadow-xl dark:shadow-[0_8px_32px_rgba(0,20,0,0.4)] border border-green/10 dark:border-[#2a4a38] overflow-hidden z-50"
-                                                onMouseEnter={() => setActiveDropdown(item.label)}
-                                                onMouseLeave={() => setActiveDropdown(null)}
+                                                initial={{
+                                                    opacity: 0,
+                                                    y: 8,
+                                                    scale: 0.98,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    y: 0,
+                                                    scale: 1,
+                                                }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    y: 6,
+                                                    scale: 0.98,
+                                                }}
+                                                transition={{
+                                                    duration: 0.2,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                }}
+                                                className="
+                                                absolute
+                                                left-1/2
+                                                top-full
+                                                z-50
+                                                mt-2
+                                                w-[720px]
+                                                -translate-x-1/2
+                                                overflow-hidden
+                                                rounded-2xl
+                                                border
+                                                border-gray-200/80
+                                                bg-white
+                                                shadow-[0_20px_60px_rgba(0,0,0,0.12)]
+                                                dark:border-[#2a4a38]
+                                                dark:bg-[#10291b]
+                                                dark:shadow-[0_20px_60px_rgba(0,20,0,0.45)]
+                                            "
                                             >
-                                                <div className="p-6">
-                                                    <h3 className="text-lg font-bold text-gray-900 dark:text-[#f9fafb] mb-4 flex items-center gap-2">
-                                                        <span className="text-green-800 dark:text-emerald-400">{item.label}</span>
-                                                    </h3>
-                                                    <div className="grid gap-2">
-                                                        {dropdownContent[item.label as keyof typeof dropdownContent]?.map((dropdownItem, index) => (
-                                                            <motion.a
-                                                                key={dropdownItem.label}
-                                                                href={dropdownItem.href}
-                                                                initial={{ opacity: 0, x: -10 }}
-                                                                animate={{ opacity: 1, x: 0 }}
-                                                                transition={{ duration: 0.2, delay: index * 0.05 }}
-                                                                className="flex items-start space-x-3 p-3 rounded-lg hover:bg-green-50 dark:hover:bg-[#244f38] transition-colors duration-300 group/item"
-                                                            >
-                                                                <div className="text-green-700 dark:text-emerald-400 text-lg mt-1 group-hover/item:scale-110 transition-transform duration-300">
-                                                                    {dropdownItem.icon}
-                                                                </div>
-                                                                <div className="flex-1">
-                                                                    <div className="font-semibold text-gray-900 dark:text-[#f9fafb] group-hover/item:text-green-800 dark:group-hover/item:text-emerald-300 transition-colors duration-300">
-                                                                        {dropdownItem.label}
+                                                {/* Accent */}
+                                                <div className="h-1 bg-gradient-to-r from-green-800 via-emerald-500 to-lime-400" />
+
+                                                <div className="grid grid-cols-[220px_1fr]">
+
+                                                    {/* Intro */}
+                                                    <div className="bg-green-50 p-6 dark:bg-[#0c2417]">
+                                                        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-green-800 text-xl text-white shadow-md dark:bg-emerald-600">
+                                                            <FaLeaf />
+                                                        </div>
+
+                                                        <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-emerald-400">
+                                                            {item.label}
+                                                        </p>
+
+                                                        <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+                                                            Discover Blacc Farms
+                                                        </h3>
+
+                                                        <p className="text-sm leading-relaxed text-gray-600 dark:text-[#9fbaa5]">
+                                                            Explore our farm, our people, and
+                                                            everything we grow and produce.
+                                                        </p>
+
+                                                        <a
+                                                            href={item.href}
+                                                            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-green-800 transition-all hover:gap-3 dark:text-emerald-400"
+                                                        >
+                                                            Explore {item.label}
+                                                            <span>→</span>
+                                                        </a>
+                                                    </div>
+
+                                                    {/* Dropdown Links */}
+                                                    <div className="p-6">
+                                                        <div className="grid grid-cols-2 gap-3">
+                                                            {dropdownContent[
+                                                                item.label as keyof typeof dropdownContent
+                                                            ]?.map((dropdownItem, index) => (
+                                                                <motion.a
+                                                                    key={dropdownItem.label}
+                                                                    href={dropdownItem.href}
+                                                                    initial={{
+                                                                        opacity: 0,
+                                                                        y: 8,
+                                                                    }}
+                                                                    animate={{
+                                                                        opacity: 1,
+                                                                        y: 0,
+                                                                    }}
+                                                                    transition={{
+                                                                        duration: 0.2,
+                                                                        delay: index * 0.04,
+                                                                    }}
+                                                                    className="
+                                                                    group/item
+                                                                    flex items-start gap-4
+                                                                    rounded-xl
+                                                                    border border-transparent
+                                                                    p-4
+                                                                    transition-all
+                                                                    duration-200
+                                                                    hover:border-green-100
+                                                                    hover:bg-green-50
+                                                                    dark:hover:border-[#315c43]
+                                                                    dark:hover:bg-[#183a27]
+                                                                "
+                                                                >
+                                                                    {/* Icon */}
+                                                                    <div
+                                                                        className="
+                                                                        flex h-11 w-11 shrink-0
+                                                                        items-center justify-center
+                                                                        rounded-xl
+                                                                        bg-green-100
+                                                                        text-lg
+                                                                        text-green-800
+                                                                        transition-all duration-200
+                                                                        group-hover/item:bg-green-800
+                                                                        group-hover/item:text-white
+                                                                        dark:bg-[#214b32]
+                                                                        dark:text-emerald-400
+                                                                        dark:group-hover/item:bg-emerald-600
+                                                                        dark:group-hover/item:text-white
+                                                                    "
+                                                                    >
+                                                                        {dropdownItem.icon}
                                                                     </div>
-                                                                    <div className="text-xs text-gray-600 dark:text-[#8aa88a]">
-                                                                        {dropdownItem.description}
+
+                                                                    {/* Text */}
+                                                                    <div className="min-w-0 flex-1">
+                                                                        <div className="flex items-center justify-between gap-2">
+                                                                            <span className="font-semibold text-gray-900 dark:text-white">
+                                                                                {dropdownItem.label}
+                                                                            </span>
+
+                                                                            <span
+                                                                                className="
+                                                                                translate-x-[-4px]
+                                                                                text-green-700
+                                                                                opacity-0
+                                                                                transition-all
+                                                                                duration-200
+                                                                                group-hover/item:translate-x-0
+                                                                                group-hover/item:opacity-100
+                                                                                dark:text-emerald-400
+                                                                            "
+                                                                            >
+                                                                                →
+                                                                            </span>
+                                                                        </div>
+
+                                                                        <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-[#8faa96]">
+                                                                            {dropdownItem.description}
+                                                                        </p>
                                                                     </div>
-                                                                </div>
-                                                            </motion.a>
-                                                        ))}
+                                                                </motion.a>
+                                                            ))}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </motion.div>
