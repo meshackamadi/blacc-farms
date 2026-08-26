@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaUsers, FaHouse, FaAward, FaShoppingCart, FaSearch, FaLeaf, FaBars, FaTimes, FaQuoteLeft } from "react-icons/fa";
+import { FaChevronDown, FaUsers, FaHome, FaAward, FaShoppingCart, FaSearch, FaLeaf, FaBars, FaTimes, FaQuoteLeft } from "react-icons/fa";
 import { GiFarmTractor, } from "react-icons/gi";
 import ThemeToggle from "./ui/ThemeToggle";
 
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
         ],
         Visit: [
             {
-                icon: <FaHouse />,
+                icon: <FaHome />,
                 label: "Farm Store",
                 href: "#farm store",
                 description: "Location & hours"
