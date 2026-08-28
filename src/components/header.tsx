@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaUsers, FaHome, FaAward, FaShoppingCart, FaSearch, FaLeaf, FaBars, FaTimes, FaQuoteLeft } from "react-icons/fa";
+import { FaChevronDown, FaUsers, FaHome, FaAward, FaShoppingCart, FaSearch, FaLeaf, FaBars, FaTimes, FaQuoteLeft, FaRoute, FaBullhorn, FaShoppingBasket, FaBlog, FaBookOpen, FaSeedling, FaQuestionCircle } from "react-icons/fa";
 import { GiFarmTractor, } from "react-icons/gi";
 import ThemeToggle from "./ui/ThemeToggle";
 
@@ -43,19 +43,19 @@ const Header: React.FC = () => {
                 description: "Location & hours"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaRoute />,
                 label: "Farm Tours",
                 href: "#farm tour",
                 description: "Guided experiences"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaBullhorn />,
                 label: "Events",
                 href: "/visit#events",
                 description: "Workshops & festivals"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaShoppingBasket />,
                 label: "U-Pick",
                 href: "/visit#upick",
                 description: "Pick your own"
@@ -63,25 +63,25 @@ const Header: React.FC = () => {
         ],
         Learn: [
             {
-                icon: <FaLeaf />,
+                icon: <FaBlog />,
                 label: "Blog",
                 href: "#blog",
                 description: "Farm updates & tips"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaBookOpen />,
                 label: "Recipes",
                 href: "/learn#recipes",
                 description: "Seasonal recipes"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaSeedling />,
                 label: "Growing Guide",
                 href: "/learn#guide",
                 description: "Gardening tips"
             },
             {
-                icon: <FaLeaf />,
+                icon: <FaQuestionCircle />,
                 label: "FAQ",
                 href: "/learn#faq",
                 description: "Common questions"
