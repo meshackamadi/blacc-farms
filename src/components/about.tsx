@@ -40,9 +40,9 @@ const About: React.FC = () => {
       caption: "Our Priority in Livestock Management"
     }
   ];
-  
+
   return (
-    <section 
+    <section
       id="story"
       className="py-20 relative min-h-screen bg-cover bg-center bg-fixed"
       style={{
@@ -60,11 +60,11 @@ const About: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 [text-shadow:0_0_20px_rgba(255,255,255,0.5)]">
-            Our <span className="text-green [text-shadow:0_0_10px_rgba(72,187,120,0.5)]">Story</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+            Our <span className="text-green">Story</span>
           </h1>
           <p className="text-xl text-white max-w-3xl mx-auto">
-            For over four generations, the Blacc family has been dedicated to sustainable agriculture, 
+            For over four generations, the Blacc family has been dedicated to sustainable agriculture,
             bringing fresh, organic produce to our community while nurturing the land we call home.
           </p>
         </motion.div>
